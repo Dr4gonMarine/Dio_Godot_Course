@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7q4frlkfgqk2"]
+
+[ext_resource type="Texture2D" uid="uid://b15obt24eb8x6" path="res://addons/Tiny Swords/UI/Banners/Banner_Horizontal.png" id="1_c7d44"]
+[ext_resource type="Script" path="res://ui/game_ui.gd" id="1_tiwmi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hjk80"]
+texture = ExtResource("1_c7d44")
+texture_margin_left = 32.0
+texture_margin_top = 16.0
+texture_margin_right = 32.0
+texture_margin_bottom = 48.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 2
+region_rect = Rect2(32, 48, 128, 128)
+
+[node name="GameUi" type="CanvasLayer"]
+script = ExtResource("1_tiwmi")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -189.0
+offset_top = 11.0
+offset_right = -13.0
+offset_bottom = 107.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_hjk80")
+
+[node name="Gold" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+text = "60 gold"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.5
+offset_top = 21.0
+offset_right = 25.5
+offset_bottom = 50.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "8:30"
+horizontal_alignment = 1
+vertical_alignment = 1

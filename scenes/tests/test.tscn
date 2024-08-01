@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://gb5ueulfvikn"]
+
+[ext_resource type="PackedScene" uid="uid://cfyjbovojrfgh" path="res://scenes/player.tscn" id="1_u1g78"]
+[ext_resource type="PackedScene" uid="uid://b7q4frlkfgqk2" path="res://ui/game_ui.tscn" id="4_lb5f7"]
+[ext_resource type="PackedScene" uid="uid://c88hr73m2e2i2" path="res://misc/health_regen.tscn" id="5_vw8yc"]
+[ext_resource type="PackedScene" uid="uid://5oxb70hweaom" path="res://misc/mob_spawner.tscn" id="6_avmk2"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_u1g78")]
+position = Vector2(880, 433)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+process_callback = 0
+
+[node name="HealthRegen" parent="." instance=ExtResource("5_vw8yc")]
+position = Vector2(650, 190)
+
+[node name="MobSpawner" parent="." instance=ExtResource("6_avmk2")]
+position = Vector2(-18, -30)
+
+[node name="GameUi" parent="." instance=ExtResource("4_lb5f7")]

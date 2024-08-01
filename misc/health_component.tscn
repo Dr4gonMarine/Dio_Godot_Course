@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf4wjpg0n6lr"]
+
+[ext_resource type="Script" path="res://scripts/health_component.gd" id="1_7tste"]
+[ext_resource type="PackedScene" uid="uid://clp5iet7y6405" path="res://misc/skull.tscn" id="2_kndo2"]
+
+[node name="HealthComponent" type="Node2D"]
+script = ExtResource("1_7tste")
+death_prefab = ExtResource("2_kndo2")

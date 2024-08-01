@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://crulte24kvyhw"]
+
+[ext_resource type="Texture2D" uid="uid://bo8esypueuyfx" path="res://addons/Tiny Swords/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="3_cp83f"]
+[ext_resource type="PackedScene" uid="uid://cf4wjpg0n6lr" path="res://misc/health_component.tscn" id="3_l4lbl"]
+[ext_resource type="PackedScene" uid="uid://c88hr73m2e2i2" path="res://misc/health_regen.tscn" id="4_d2jl0"]
+[ext_resource type="Script" path="res://scenes/enemies/behaviors/follow_player.gd" id="4_ot0x5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrknj"]
+atlas = ExtResource("3_cp83f")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jri61"]
+atlas = ExtResource("3_cp83f")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xx3o"]
+atlas = ExtResource("3_cp83f")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtm7t"]
+atlas = ExtResource("3_cp83f")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyn0f"]
+atlas = ExtResource("3_cp83f")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42276"]
+atlas = ExtResource("3_cp83f")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r12pk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrknj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jri61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xx3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtm7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyn0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42276")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j5uti"]
+radius = 12.5387
+height = 50.072
+
+[node name="Goblin" type="CharacterBody2D" groups=["enemies"]]
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -34)
+sprite_frames = SubResource("SpriteFrames_r12pk")
+autoplay = "default"
+frame_progress = 0.0603517
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, -12.5)
+rotation = -1.59148
+shape = SubResource("CapsuleShape2D_j5uti")
+
+[node name="Follow_player" type="Node2D" parent="."]
+script = ExtResource("4_ot0x5")
+speed = 0.4
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_l4lbl")]
+rotation = 0.24838
+drop_chance = 0.2
+drop_items = Array[PackedScene]([ExtResource("4_d2jl0")])
+
+[node name="DamageDigitMarker" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -60.5)

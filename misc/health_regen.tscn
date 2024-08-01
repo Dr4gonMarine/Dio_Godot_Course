@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://c88hr73m2e2i2"]
+
+[ext_resource type="Texture2D" uid="uid://byshetewrthoe" path="res://addons/Tiny Swords/Resources/Resources/M_Spawn.png" id="1_cg73l"]
+[ext_resource type="Script" path="res://scripts/health_regen.gd" id="2_nf681"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hspq"]
+atlas = ExtResource("1_cg73l")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dukxu"]
+atlas = ExtResource("1_cg73l")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgxh1"]
+atlas = ExtResource("1_cg73l")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx5v0"]
+atlas = ExtResource("1_cg73l")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhjm6"]
+atlas = ExtResource("1_cg73l")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mal6f"]
+atlas = ExtResource("1_cg73l")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n5u1"]
+atlas = ExtResource("1_cg73l")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27s88"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hspq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dukxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgxh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx5v0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhjm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mal6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n5u1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ftl2f"]
+radius = 45.0111
+
+[node name="HealthRegen" type="AnimatedSprite2D"]
+position = Vector2(0, -30)
+sprite_frames = SubResource("SpriteFrames_27s88")
+autoplay = "default"
+script = ExtResource("2_nf681")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ftl2f")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
